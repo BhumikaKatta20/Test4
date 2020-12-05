@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block style %}
+  <style>
+      .table_col{
+        margin-left:10px;
+  width:180px;
+color:black;
+float:left;}
+  </style>
+{% endblock %}
+{% block body %}
+
+<br><br><br><br><br><br>
+{% if user.is_superuser %}
+<center><h3 style="color: black;font-size:25px; font-family: 'Cooper Black';"><u>Loan Applications</u></h3></center>
+  <div class="row" style="margin-left:10%;">
+<div class="row" style="font-size: 23px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 5px 10px 5px;width:9500px;">
+
+    <div  class="table_col">ID</div>
+    <div class="table_col">user_name</div>
+    <div class="table_col"style="width:250px;">email</div>
+    <div class="table_col">Loan Amount</div>
+    <div class="table_col">Status</div>
+    
+</div>
+
+<div class="row" style="height:350px;margin-bottom:10%;overflow-x: hidden;overflow-y: auto; width:1850px;">
+     {% for appli in Cdata %}
+      <div class="row" style="font-size: 18px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 5px 10px 5px;width:1200px;">
+
+        <div class="table_col" style="padding-left:25px;">{{appli.id}}</div>
+        <div class="table_col">{{appli.user_name}}</div>
+        <div class="table_col" style="width:250px;">{{appli.email}}</div>
+        <div class="table_col" style="width:190px "><center>{{appli.loan_amount}}/-</center></div>
+        <div class="table_col"style='width:100px;'>{{appli.Approve}}</div>
+        
+        <div class='table_col'><a href="{% url 'info' id=appli.id %}" style='width:250px;margin-left:10px;font-size: 16px;' class="btn btn-primary py-2">View</a>
+    </div></div>
+      {%  endfor %}
+
+            </tbody>
+</div>
+
+            
+
+      <br><br><br><br>
+
+{% elif user.is_staff %}
+<center><h3 style="color: black;font-size:25px; font-family: 'Cooper Black';"><u>Your Applications</u></h3></center>
+  <div class="container">
+<div class="row" style="font-size: 25px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 10px 10px 10px;width:9500px;">
+
+     <div  class="table_col">ID</div>
+    <div class="table_col">user_name</div>
+    <div class="table_col"style="width:250px;">email</div>
+    <div class="table_col">Loan Amount</div>
+    <div class="table_col">Status</div>
+    
+</div>
+
+
+<div class="row" style="height:350px;margin-bottom:10%;overflow-x: hidden;overflow-y: auto; width:1850px;">
+     {% for appli in Cdata %}
+      <div class="row" style="font-size: 18px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 5px 10px 5px;width:1200px;">
+       <div class="table_col" style="padding-left:25px;">{{appli.id}}</div>
+        <div class="table_col">{{appli.user_name}}</div>
+        <div class="table_col" style="width:250px;">{{appli.email}}</div>
+        <div class="table_col" style="width:190px "><center>{{appli.loan_amount}}/-</center></div>
+        <div class="table_col"style='width:100px;'>{{appli.Approve}}</div>
+        <div class='table_col'><a href="{% url 'edit_application' id=appli.id %}" class="btn btn-primary py-2">View</a>
+
+    </div></div>
+      {%  endfor %}
+
+            </tbody>
+</div>
+
+            
+
+      <br><br><br><br>
+  {% elif user.is_authenticated%}
+
+
+    <h1 style="color: aliceblue; font-family: 'Baskerville Old Face';"> The contents are hidden </h1>
+
+
+      {% endif %}
+
+
+{% endblock %}

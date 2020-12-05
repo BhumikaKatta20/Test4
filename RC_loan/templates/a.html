@@ -1,0 +1,133 @@
+<!--
+{% block body %}
+<br><br><br>
+<form action="application_submit" method="get">|
+<div class='row'>
+    <div class='container' style="margin:10px 10px 10px 250px; padding:10px 10px 10px 10px; width:30%;">
+        <div class='group'>
+    <div class='lab'><label>user name</label></div>
+    <div class='form_cont'><input type="text" name="user_name" required="User Name">
+        <br><p>{{user_name_error}}</p></div>
+    </div>
+    <div class='group'>
+        <div class='lab'><label>first name</label></div>
+        <div class='form_cont'><input type="text" name="first_name" required="First name">
+        <br><p>{{first_name_error}}</p></div>
+    </div>
+    <div class='group'>
+        <div class='lab'><label>last name</label></div>
+        <div class='form_cont'><input type="text" name="last_name" required="Last name">
+        <br><p>{{last_name_error}}</p></div>
+    </div>
+    <div class='group'>
+        <div class='lab'><label>email</label></div>
+        <div class='form_cont'><input type="email" name="email" required="Email">
+            <br><p>{{email_error}}</p></div>
+    </div>
+    
+    <div class='group'>
+        <div class='lab' style="margin-bottom: 46px;"><label>Address</label></div>
+        <div class='form_cont'><textarea name='Address'></textarea>
+            <br><p>{{Address_error}}</p></div>
+    </div>
+    <div class='group'>
+        <div class='lab'><label>Adhaar Card</label></div>
+        <div class='form_cont'><input type="number" name="adhaar_card" required="Adhaar Card">
+        <br><p>{{adhaar_card_error}}</p></div>
+    </div>
+    <div class='group'>
+        <div class='lab'><label>Pan Card</label></div>
+        <div class='form_cont'><input type="text" name="pan_card" required="Pan Card">
+        <br><p>{{pan_card_error}}</p></div>
+    </div>
+    <div class='group'>
+        <div class='lab'><label>Phone Number</label></div>
+        <div class='form_cont'><input type="number" name="phone_number" required="Phone number">
+        <br><p>{{phone_number_error}}</p></div>
+    </div>
+    <div class='group'>
+        <div class='lab'><label>Date of birth</label></div>
+        <div class='form_cont'><input type="date" name="date_of_birth" required="Date of Birth">
+        <br><p>{{date_of_birth_error}}</p></div>
+    </div>
+    <button type='submit'> submint</button>
+</div>
+</div>
+
+</form>
+{% endblock %}
+-->
+
+
+    <!-- Call Me -->
+    <div id="callMe" class="form-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-container">
+                        <div class="section-title">CALL ME</div>
+                        <h2 class="white">Have Us Contact You By Filling And Submitting The Form</h2>
+                        <p class="white">You are just a few steps away from a personalized offer. Just fill in the form and send it to us and we'll get right back with a call to help you decide what service package works.</p>
+                        <ul class="list-unstyled li-space-lg white">
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">It's very easy just fill in the form so we can call</div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">During the call we'll require some info about the 
+                                company</div>
+                            </li>
+                            <li class="media">
+                                <i class="fas fa-square"></i>
+                                <div class="media-body">Don't hesitate to email us for any questions or inquiries</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div> <!-- end of col -->
+                <div class="col-lg-6">
+                   
+                    <!-- Call Me Form -->
+                    <form id="callMeForm" data-toggle="validator" data-focus="false">
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="lname" name="lname" required>
+                            <label class="label-control" for="lname">Name</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control-input" id="lphone" name="lphone" required>
+                            <label class="label-control" for="lphone">Phone</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control-input" id="lemail" name="lemail" required>
+                            <label class="label-control" for="lemail">Email</label>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control-select" id="lselect" required>
+                                <option class="select-option" value="" disabled selected>Interested in...</option>
+                                <option class="select-option" value="Off The Ground">Off The Ground</option>
+                                <option class="select-option" value="Accelerated Growth">Accelerated Growth</option>
+                                <option class="select-option" value="Market Domination">Market Domination</option>
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group checkbox white">
+                            <input type="checkbox" id="lterms" value="Agreed-to-Terms" name="lterms" required>I agree with Aria's stated <a class="white" href="privacy-policy.html">Privacy Policy</a> and <a class="white" href="terms-conditions.html">Terms & Conditions</a>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control-submit-button">CALL ME</button>
+                        </div>
+                        <div class="form-message">
+                            <div id="lmsgSubmit" class="h3 text-center hidden"></div>
+                        </div>
+                    </form>
+                    <!-- end of call me form -->
+                    
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of form-1 -->
+    <!-- end of call me -->

@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block style %}
+  <style>
+      .table_col{
+  width:200px;
+color:black;
+float:left;}
+  </style>
+{% endblock %}
+{% block body %}
+
+<br><br><br><br><br><br>
+{% if user.is_staff %}|
+<center><h3 style="color: black;font-size:25px; font-family: 'Cooper Black';"><u>Loan Applications</u></h3></center>
+  <div class="container">
+<div class="row" style="font-size: 25px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 10px 10px 10px;width:9500px;">
+    <div  class="table_col">ID</div>
+    <div class="table_col">User Name</div>
+    <div class="table_col">First Name</div>
+    <div class="table_col">Last Name</div>
+    <div class="table_col">email</div>
+</div>
+
+<div class="contanier" style="height:350px;margin-bottom:10%;overflow-x: hidden;overflow-y: auto; width:1550px;">
+     {% for appli in Cdata %}
+      <div class="row" style="font-size: 18px;font-family: 'Baskerville Old Face';color:whitesmoke;padding:10px 10px 10px 10px;width:1100px;margin:10px 10px 10px 0px;border-style: solid">
+
+        <div class="table_col" style="padding-left:10px;">{{appli.id}}</div>
+        <div class="table_col">{{appli.username}}</div>
+        <div class="table_col" style="width:190px">{{appli.first_name}}</div>
+        <div class="table_col">{{appli.last_name}}</div>
+        <div class="table_col">{{appli.email}}</div><br><br>
+        <div class='table_col' style="margin:2px 10px 2px 75%;"><a href="{% url 'cust_edit' id=appli.id %}" style='width:200px;margin-left:10px;font-size: 16px;' class="btn btn-primary py-2">View and Edit</a>
+    </div>
+    
+</div>
+      {%  endfor %}
+    
+
+            </tbody>
+</div>
+{% endif %}
+            
+
+      <br><br><br><br>
+
+
+{% endblock %}

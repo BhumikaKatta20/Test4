@@ -1,0 +1,207 @@
+{% extends 'index.html' %}
+{% block style %}
+<style>
+.lab{
+width:35%;float:left;
+font-size:24px;
+margin-bottom:13px;}
+.form_cont{
+width:55%;float:right;}
+.group{
+  margin:0px 10px 0px 200px; padding:0px 10px 5px 10px; width:30%;
+}
+.error{
+float:right;
+}
+.erro{
+color:red;
+}
+
+</style>
+    {% endblock %}
+
+{% block body %}
+<br><br><br>
+<center><h1>RC Loan Application</h1></center>
+<form action="smit" method="get">|
+<div class='row'>
+    <div class='group'>
+  <div class='lab'><label>user name</label></div>
+  <div class='form_cont'><input type="text" name="user_name" value='{{user_name}}' required="User Name">
+    <div class='error'><p class='erro'>{{user_name_error}}</p></div></div>
+  </div>
+    <div class='group'>
+    <div class="lab"><span class="input-group-text">Loan Amount(Rs.)</span></div>
+         <div class='form_cont'>
+          <input type="number" class="form-control" id="amount" name='loan_amount' value="{{loan_amount}}" placeholder="Loan Amount" required="loan_amount" />
+          <div class='error'><p class='erro'>{{loan_amount_error}}</p></div>
+        </div></div>
+
+
+  <div class='group'>
+    <div class='lab'><label>first name</label></div>
+    <div class='form_cont'><input type="text" name="first_name" value='{{first_name}}' required="First name">
+    <div class='error'><p class='erro'>{{first_name_error}}</p></div></div>
+  </div>
+  <div class='group'>
+    <div class="lab"><span class="input-group-text">Rate of intrest</span></div>
+         <div class='form_cont'>
+          <input type="number" class="form-control" id="interest" value='9' readonly/>
+         </div></div>
+
+
+  <div class='group'>
+    <div class='lab'><label>last name</label></div>
+    <div class='form_cont'><input type="text" name="last_name" value='{{last_name}}' required="Last name">
+    <div class='error'><p class='erro'>{{last_name_error}}</p></div></div>
+  </div>
+  <div class='group'>
+    <div class="lab"><span class="input-group-text">Time (Years)</span></div>
+         <div class='form_cont'>
+          <input type="number" id="years" class="form-control" name='year' value='{{year}}' placeholder="Years To Repay"/>
+         <div class='error'><p class='erro'>{{year_error}}</p></div>
+       </div></div>
+
+
+  <div class='group'>
+    <div class='lab'><label>email</label></div>
+    <div class='form_cont'><input type="email" name="email" value={{email}} required="Email">
+    <div class='error'><p class='erro'>{{email_error}}</p></div></div>
+  </div>
+
+ <div class='group'>
+    <div class="lab"><span class="input-group-text">Total Interest</span></div>
+        <div class='form_cont'>
+          <input type="number" class="form-control" id="total-interest" name='total_intrest' readonly /></div>
+    </div>
+
+
+  <div class='group'>
+    <div class='lab' style="margin-bottom: 46px;"><label>Address</label></div>
+    <div class='form_cont'><textarea name='Address'>{{Address}}</textarea>
+    <div class='error'><p class='erro'>{{Address_error}}</p></div></div>
+  </div>
+  <div class='group'>
+    <div class="lab"><span class="input-group-text">Monthly Payment</span></div>
+        <div class='form_cont'><input type="number" class="form-control" id="monthly-payment" name='monthly' readonly/></div>
+    </div>
+
+
+
+  <div class='group'>
+    <div class='lab'><label>Adhaar Card</label></div>
+    <div class='form_cont'><input type="number" name="adhaar_card" value={{adhaar_card}} required="Adhaar Card">
+    <div class='error'><p class='erro'>{{adhaar_card_error}}</p></div></div>
+  </div>
+  <div class='group'>
+    <div class="lab"><span class="input-group-text">Total Payment</span></div>
+        <div class='form_cont'> <input type="number" class="form-control" id="total-payment" name='total_amount' readonly /></div>
+    </div>
+
+
+  <div class='group'>
+    <div class='lab'><label>Phone Number</label></div>
+    <div class='form_cont'><input type="number" name="phone_number" value={{phone_number}} required="Phone number">
+    <div class='error'><p class='erro'>{{phone_number_error}}</p></div></div>
+  </div>
+
+   <div class="group">
+                 <a value="Calculate" name='cal' onclick="calculateResults()" class="btn btn-primary btn-block" style='color:white;'> Calculate</a>
+              </div>
+
+
+  <div class='group'>
+    <div class='lab'><label>Pan Card</label></div>
+    <div class='form_cont'><input type="text" name="pan_card" value={{pan_card}} required="Pan Card">
+    <div class='error'><p class='erro'>{{pan_card_error}}</p></div></div>
+  </div>
+  
+</div></div></div>
+<div class='group' style='width:100%;margin-left:40%;'>
+  <button type='submit' onclick="calculateResults()" class='btn btn-primary' style=" width: 250px;font-size: 25px;"> Submint</button></div>
+</div>
+</form>
+
+ <script>
+      // Code By Webdevtrick ( https://webdevtrick.com )
+// Listen for Submit
+document.getElementById("loan-form").addEventListener("submit", function(e) {
+  // Hide Results
+  document.getElementById("result").style.display = "none";
+ 
+  // Show Loader
+  
+ 
+  setTimeout(calculateResults, 20);
+ 
+  e.preventDefault();
+});
+ 
+// Calculate Results
+function calculateResults() {
+ 
+  const amount = document.getElementById("amount");
+  const interest = document.getElementById("interest");
+  const years = document.getElementById("years");
+  const monthlyPayment = document.getElementById("monthly-payment");
+  const totalPayment = document.getElementById("total-payment");
+  const totalInterest = document.getElementById("total-interest");
+ 
+  const principal = parseFloat(amount.value);
+  const calculatedInterest = parseFloat(interest.value) / 100 / 12;
+  const calculatedPayments = parseFloat(years.value) * 12;
+ 
+  // Computed Monthly payment
+  const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+  const monthly = (principal * x * calculatedInterest) / (x - 1);
+ 
+  if (isFinite(monthly)) {
+    monthlyPayment.value = monthly.toFixed(2);
+    totalPayment.value = (monthly * calculatedPayments).toFixed(2);
+    totalInterest.value = (monthly * calculatedPayments - principal).toFixed(2);
+ 
+    // Show Results
+    document.getElementById("result").style.display = "block";
+ 
+    // Hide Loader
+    
+  } else {
+    showError("Please check number inputs");
+  }
+}
+ 
+// Show Error
+function showError(error) {
+  // Hide Results
+  document.getElementById("result").style.display = "none";
+ 
+  // Hide Loader
+  
+ 
+  // Create a div
+  const errorDiv = document.createElement("div");
+ 
+  // Get Elements
+  const card = document.querySelector(".card");
+  const heading = document.querySelector(".heading");
+ 
+  // Add class
+  errorDiv.className = "alert alert-danger";
+ 
+  // Create text node and append div
+  errorDiv.appendChild(document.createTextNode(error));
+ 
+  // Insert error above heading
+  card.insertBefore(errorDiv, heading);
+ 
+  // Clear Error after 3 seconds
+  setTimeout(clearError, 3000);
+ 
+  // Clear Error
+  function clearError() {
+    document.querySelector(".alert").remove();
+  }
+}
+    </script>
+
+{% endblock %}

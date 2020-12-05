@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block body %}
+<br><br><br><br>
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo" style="margin-left:25% ;width:60%">
+    <div class="wrapper wrapper--w960" style="max-width: 80%">
+      <div class="card card-2">
+        <div
+          style="
+            width: 29.1%;
+            display: table-cell;
+          "
+        ></div>
+        <div class="card-body">
+            <div class='row' style="margin:10px 10px 30px 10px;">
+          <h2>Register Form for the Agent</h2></div>
+          <form method="POST">
+            {% csrf_token %}
+            <table>
+              {% for field in form %}
+              <div class="row row-space">
+                <tr>
+                  <td
+                    style="
+                      color: darkslategray;
+                      font-size: 18px;
+                      font-family: 'Baskerville Old Face';
+                    "
+                  >
+                    {{ field.label_tag }}
+                  </td>
+                  <td class="input-group" style="font-size:22px;">{{ field }}</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td
+                    style="
+                      color: red;
+                      font-size: 22px;
+                      font-family: 'Microsoft Himalaya';
+                    "
+                  >
+                    {{ field.errors }}
+                  </td>
+                </tr>
+              </div>
+              {% endfor %}
+              
+            </table>
+            <div class="p-t-30">
+              <button
+                class="btn btn-lg btn-primary"
+                style="
+                  float: right;
+                  width: 100px;
+                  heigth: 40px;
+                  font-size: 18px;
+                  margin-left: 20%;
+                "
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

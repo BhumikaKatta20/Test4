@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block body %}
+<br><br><br><br>
+<form class="login100-form validate-form" style="background-image:url({% static 'app/images/PL2.jpg'%});background-size:cover;" method="POST">
+    <center><h1> Login</h1></center>
+            <div class='container' style="width:30%;margin-left:40%;">
+            {% csrf_token %}
+            <div class="input100 validate-input" data-validate="Username is required" style="font-size:25px; width:90%;">
+                        <br>
+                        {{form|crispy}}
+                        <br><br><br>
+                        <button class="btn btn--radius btn-primary" style="float:right;width:450px;heigth:40px;font-size:18px;margin-left:20%;" type="submit">Submit</button>
+            
+            </div>
+            <div>
+
+            </div>
+
+          </div>
+
+        </form>
+{% endblock%}

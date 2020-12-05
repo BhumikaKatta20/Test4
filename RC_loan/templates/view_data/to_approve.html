@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+{{Cdata.email}}
+{% block style %}
+<style type="text/css">
+.lab{
+  color: darkslategray; font-size: 22px;font-family: 'Baskerville Old Face';width:50%;
+}
+.val{margin:20px;
+  font-size:18px; width:50%;
+}</style>
+{% endblock %}
+{% block body %}
+<br><br><br><br>
+<div class="page-wrapper bg-red p-t-180 p-b-100 font-robo" style="margin-left:10% ;width:80%">
+    <div class="wrapper wrapper--w960" style="max-width: 100%">
+      <div class="card card-2">
+        <div class="card-body">
+            <div class='row' style="margin:10px 10px 30px 10px;">
+          <h2><u>The Application for Loan</u></h2></div>
+          <div class='row' style="margin:0px 10px 5px 10px;">
+          <h4> Agent: {{Cdata.Agent_name}}</h4>
+          </div>
+          <form method="get" action='updatee'>
+            <table>
+              <div class="row row-space">
+                <tr>
+                  <td class='lab' >Application ID:</td>
+                  <td class="input-group val"><input value=" {{Cdata.id}}" readonly name='id'/></td>
+                  <td class='lab' >User Name:</td>
+                  <td class="input-group val">{{Cdata.user_name}}</td>
+                </tr>
+                <tr>
+                  <td class='lab' >First Name:</td>
+                  <td class="input-group val">{{Cdata.first_name}}</td>
+                  <td class='lab' >Last Name:</td>
+                  <td class="input-group val">{{Cdata.last_name}}</td>
+                </tr>
+                <tr>
+                  <td class='lab' >Adhaar Card:</td>
+                  <td class="input-group val">{{Cdata.adhaar_card}}</td>
+                  <td class='lab' >Pan Card:</td>
+                  <td class="input-group val">{{Cdata.pan_card}}</td>
+                </tr>
+                <tr>
+                  <td class='lab' >Loan Amount:</td>
+                  <td class="input-group val">{{Cdata.loan_amount}}</td>
+                  <td class='lab' >Monthly payment:</td>
+                  <td class="input-group val">{{Cdata.monthly}}</td>
+                </tr>
+                <tr>
+                  <td class='lab' >Time Period of Loan:</td>
+                  <td class="input-group val">{{Cdata.year}} years</td>
+                  <td class='lab' >Total interest:</td>
+                  <td class="input-group val">{{Cdata.total_interest}}</td>
+                </tr>
+                <tr>
+                  <td class='lab' >Email:</td>
+                  <td class="input-group val">{{Cdata.email}}</td>
+                  <td class='lab' >Phone number:</td>
+                  <td class="input-group val">{{Cdata.phone_number}}</td>
+                </tr>
+                <tr>
+                  <td class='lab' >Date of apply:</td>
+                  <td class="input-group val">{{Cdata.Date_of_apply}}</td>
+                  <td class='lab' >Permission:</td>
+                  <td class="input-group val">
+                    <select class="btn-outline-Sucess btn-lg" name="sta" style="width:250px">
+                      <option value="New">New</option>
+                      <option value="Approved">Approve</option>
+                      <option value="Rejected">Reject</option>
+                  </select>
+                  </td>
+                </tr>
+
+                  
+                 
+              </div>
+              
+            </table>
+            <div class="p-t-30">
+            <button class="btn btn-lg btn-primary"style="float: right;width: 100px;height: 40px;font-size: 18px;margin-left: 20%;" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

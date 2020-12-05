@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% block style%}
+<style>
+	table{
+		padding: 10px 10px 10px 30px;
+
+	}
+
+	 td {
+  padding: 15px;
+  text-align: left;
+}
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.td_lab{
+	
+}
+.td_error{
+	color:red;
+}</style>
+{% endblock %}
+{% block body %}
+<br><br><br><br>
+<div class="contanier" style="margin-left:10%; margin-right:10%;border-style:inset; ">
+	<form action='cust_edit_re' method="get">
+		<table style="width:100%; margin-top:50px;margin-left:50px;margin-bottom:50px;padding:10px 50px 10px 10px;">
+		<tr style=>
+			<td class='td_lab tda'>ID</td>
+			<td class='tda'><input type="text" name='id_val' value='{{id}}' readonly/></td>
+			<td class='td_error tda'> </td>
+			<td class='td_lab tda'>User Name</td>
+			<td class='tda'><input type="text" name='user_name' value='{{user_name}}' readonly/></td>
+			
+		</tr>
+		<tr>
+			<td class='td_lab tda'>First Name</td>
+			<td class='tda'><input type="text" name='first_name' value='{{first_name}}' required/></td>
+			<td class='td_error tda'>{{first_name_error}}</td>
+			<td class='td_lab'>Last Name</td>
+			<td class='tda'><input type="text" name='last_name' value='{{last_name}}' required/></td>
+			<td class='td_error'>{{last_name_error}}</td>
+		</tr>
+		<tr>
+			<td class='td_lab tda'>email</td>
+			<td class='tda'><input type="email" name='email' value='{{email}}' required/></td>
+			
+			<td class='tda'><button class='btn btn-lg btn-primary' style='width:200px;float:right;'>Submit</button></td>
+			<td></td>
+		</tr>
+	</table></form>
+</div>
+{% endblock %}
